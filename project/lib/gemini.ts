@@ -46,7 +46,9 @@ export async function analyzeMeeting(
   participants?: string[],
 ): Promise<MeetingAnalysis> {
   const client = getClient();
-  const model = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
+  
+  // FIXED: Hardcoded to standard stable production model for @google/genai SDK
+  const model = 'gemini-3.8-flash';
 
   const userPrompt = participants?.length
     ? `Participants: ${participants.join(', ')}\n\nTranscript:\n${transcript}`
